@@ -1,233 +1,132 @@
-# 🚀 UART Communication using PIC16F877A
+<!-- HEADER -->
 
-![PIC16F877A](https://img.shields.io/badge/Microcontroller-PIC16F877A-blue)
-![XC8](https://img.shields.io/badge/Compiler-XC8-green)
-![Protocol](https://img.shields.io/badge/Protocol-UART-orange)
-![Status](https://img.shields.io/badge/Status-Working-success)
+<h1 align="center">
+🚀 UART Communication using PIC16F877A
+</h1>
 
-## 📌 Project Overview
+<p align="center">
+Serial Communication using Embedded C • MPLAB X • XC8
+</p>
 
-This project demonstrates **UART (Universal Asynchronous Receiver Transmitter)** communication using **PIC16F877A**.
+<!-- Typing Animation -->
 
-Using UART, the PIC can:
-
-* 📤 Send data to Serial Monitor
-* 📥 Receive data from Serial Monitor
-* 💡 Control outputs (LED ON/OFF)
-* 🔄 Perform full duplex communication
-
-This project is useful for:
-
-* Embedded Systems Beginners
-* UART Protocol Learning
-* PIC Microcontroller Practice
-* Serial Communication Projects
+<p align="center">
+<img src="https://readme-typing-svg.herokuapp.com?font=Poppins&size=28&duration=3000&pause=1000&color=00D9FF&center=true&vCenter=true&width=800&lines=PIC16F877A+UART+Project;Embedded+Systems+Development;Serial+Communication+Protocol;Transmit+%26+Receive+Data;Built+using+MPLAB+X+%2B+XC8">
+</p>
 
 ---
 
-## 🛠 Hardware Required
+<!-- BADGES -->
 
-| Component                  | Quantity |
-| -------------------------- | -------- |
-| PIC16F877A                 | 1        |
-| Crystal Oscillator (20MHz) | 1        |
-| Capacitors (22pF)          | 2        |
-| LED                        | 1        |
-| Resistor (330Ω)            | 1        |
-| USB to UART Converter      | 1        |
-| Breadboard / PCB           | 1        |
+<p align="center">
 
----
+<img src="https://img.shields.io/badge/Microcontroller-PIC16F877A-blue?style=for-the-badge">
 
-## ⚙️ Configuration
+<img src="https://img.shields.io/badge/Compiler-XC8-success?style=for-the-badge">
 
-### Microcontroller
+<img src="https://img.shields.io/badge/Protocol-UART-orange?style=for-the-badge">
 
-```c
-#define _XTAL_FREQ 20000000
-```
+<img src="https://img.shields.io/badge/Language-Embedded_C-red?style=for-the-badge">
 
-### UART Settings
+<img src="https://img.shields.io/badge/Status-Working-brightgreen?style=for-the-badge">
 
-```text
-Baud Rate : 9600
-Data Bits : 8
-Parity    : None
-Stop Bits : 1
-```
+</p>
 
 ---
 
-## 📂 Project Structure
+<!-- ANIMATED LINE -->
 
-```plaintext
-UART-PIC16F877A/
-│
-├── main.c
-├── uart.c
-├── uart.h
-├── README.md
-└── images/
-```
+<img src="https://capsule-render.vercel.app/api?type=waving&color=0:00C9FF,100:92FE9D&height=120&section=header"/>
 
 ---
 
-## 🔌 Circuit Connection
+## ✨ Features
+
+⚡ UART Transmission
+📩 UART Reception
+🔄 Full Duplex Communication
+💡 LED ON / OFF Control
+🧠 Baud Rate Calculation
+🛠 Beginner Friendly
+
+---
+
+## 📷 Project Preview
+
+<p align="center">
+
+<img width="800"
+src="https://media.giphy.com/media/f3iwJFOVOwuy7K6FFw/giphy.gif">
+
+</p>
+
+---
+
+## 🔌 Circuit
 
 ```plaintext
 PIC16F877A              USB UART
 --------------------------------
-RC6 (TX)      ------->  RX
-RC7 (RX)      <-------  TX
-GND           -------   GND
+RC6 (TX)       ----->   RX
+RC7 (RX)       <-----   TX
+GND            -----    GND
 ```
 
 ---
 
-## 💻 UART Initialization
+## ⚙ UART Configuration
 
 ```c
+#define _XTAL_FREQ 20000000
+
 void UART_init()
 {
-    TRISCbits.TRISC6 = 1;
-    TRISCbits.TRISC7 = 1;
+TRISCbits.TRISC6=1;
+TRISCbits.TRISC7=1;
 
-    SPBRG = 129;      // 9600 Baud @20MHz
+SPBRG=129;
 
-    TXSTA = 0x24;
-    RCSTA = 0x90;
+TXSTA=0x24;
+RCSTA=0x90;
 }
 ```
 
 ---
 
-## 📤 UART Transmit Function
+## 📊 Project Stats
 
-```c
-void UART_write(char data)
-{
-    while(!TXSTAbits.TRMT);
+<p align="center">
 
-    TXREG = data;
-}
-```
+<img src="https://github-readme-stats.vercel.app/api?username=YOUR_USERNAME&show_icons=true&theme=tokyonight">
 
-### Explanation
-
-* Wait until previous transmission completes
-* Load data into `TXREG`
-* UART sends automatically
+</p>
 
 ---
 
-## 📥 UART Receive Function
+## 📈 Activity Graph
 
-```c
-char UART_read()
-{
-    while(!PIR1bits.RCIF);
+<p align="center">
 
-    return RCREG;
-}
-```
+<img src="https://github-readme-activity-graph.vercel.app/graph?username=YOUR_USERNAME&theme=react-dark">
 
-### Explanation
-
-* Wait for incoming data
-* Read received byte from `RCREG`
+</p>
 
 ---
 
-## ▶️ Example Output
+## ⭐ Support
 
-### Send:
+If you like this project:
 
-```text
-ON
-```
-
-### Serial Monitor:
-
-```text
-LED ON
-```
+🌟 Star the Repository
+🍴 Fork the Project
+🧠 Learn Embedded Systems
 
 ---
 
-### Send:
-
-```text
-OFF
-```
-
-### Serial Monitor:
-
-```text
-LED OFF
-```
-
----
-
-## 🧠 UART Formula
-
-```text
-SPBRG = (Fosc / (64 × Baud)) − 1
-```
-
-Example:
-
-```text
-Fosc = 20MHz
-Baud = 9600
-
-SPBRG = 129
-```
-
----
-
-## 🚀 How to Run
-
-1. Open project in MPLAB X IDE
-2. Select XC8 Compiler
-3. Build Project
-4. Flash to PIC16F877A
-5. Open Serial Monitor
-6. Set Baud = **9600**
-7. Send text
-
----
-
-## 📷 Demo
-
-Add project screenshot here:
-
-```plaintext
-images/output.png
-```
-
----
-
-## 📚 Concepts Covered
-
-✔ UART Protocol
-✔ Serial Communication
-✔ TX/RX Registers
-✔ Baud Rate Calculation
-✔ PIC16F877A Programming
-✔ Embedded C
-
----
-
-## 🤝 Contributing
-
-Pull requests are welcome.
-
-If you found this project useful, give ⭐ to support.
-
----
-
-## 👨‍💻 Author
-
-**Akash R**
+<p align="center">
 
 Made with ❤️ using PIC16F877A
+
+</p>
+
+<img src="https://capsule-render.vercel.app/api?type=waving&color=0:00C9FF,100:92FE9D&height=120&section=footer"/>
