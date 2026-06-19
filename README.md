@@ -2,8 +2,8 @@
 
 ![PIC16F877A](https://img.shields.io/badge/Microcontroller-PIC16F877A-blue)
 ![XC8](https://img.shields.io/badge/Compiler-XC8-green)
-![Protocol-UART-orange)
-![Status-Working-success](https://img.shields.io/badge/Status-Working-success)
+![Protocol](https://img.shields.io/badge/Protocol-UART-orange)
+![Status](https://img.shields.io/badge/Status-Working-success)
 
 ## 📌 Project Overview
 
