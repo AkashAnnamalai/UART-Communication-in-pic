@@ -1,1 +1,1 @@
-# UART-Communication-in-pic
+# UART-Communication-in-pic16f877a
